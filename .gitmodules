@@ -1,0 +1,6 @@
+[submodule "src/submodules/assure"]
+	path = src/submodules/assure
+	url = https://github.com/jstar920/assure.git
+[submodule "src/submodules/timeUtils"]
+	path = src/submodules/timeUtils
+	url = https://github.com/jstar920/timeUtils.git

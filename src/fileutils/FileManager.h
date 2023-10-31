@@ -4,15 +4,7 @@
 
 namespace fileutils
 {
-    enum class FileErrorCode
-    {
-        Unknow,
-        FileNotExist,
-        FileAlreadyExist,
-        DirectorNotExist,
-        DirectorNotExist,
-    };
-
+    enum class FileErrorCode;
     class FileManager
     {
     public:

@@ -1,4 +1,8 @@
 #include "FileManager.h"
+#include "FileErrorCode.h"
+
+#include <fstream>
+#include <cstdio>
 
 namespace fileutils
 {
@@ -9,9 +13,26 @@ namespace fileutils
     }
 
     bool FileManager::createFile(const std::string& fileName)
-    {}
+    {
+        std::ofstream outputFile(fileName);
+        if (!outputFile.is_open())
+        {
+            sErrorCode.store(fromSystemCode(errno));
+            return false;
+        }
+        return true;
+    }
+
     bool FileManager::deleteFile(const std::string& fileName)
-    {}
+    {
+        if (std::remove(fileName.c_str()))
+        {
+            sErrorCode.store(fromSystemCode(errno));
+            return false;
+        }
+        return true;
+    }
+
     bool FileManager::renameFile(const std::string& oldName, const std::string& newName)
     {}
     bool FileManager::fileExists(const std::string& fileName)
