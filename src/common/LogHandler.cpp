@@ -13,7 +13,7 @@ namespace fileutils
         }
         else
         {
-            std::cout << WallClock::getCurrentTimeUTCAsLogTimestamp() << " " << logLevelString(level) << " " << msg << std::endl;
+            std::cout << timeutils::WallClock::getCurrentTimeUTCAsLogTimestamp() << " " << logLevelString(level) << " " << msg << std::endl;
         }
     }
 

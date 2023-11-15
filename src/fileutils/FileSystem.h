@@ -5,7 +5,7 @@
 namespace fileutils
 {
     enum class FileErrorCode;
-    class FileManager
+    class FileSystem
     {
     public:
         static FileErrorCode getLastFileErrorCode();
@@ -19,7 +19,9 @@ namespace fileutils
         static bool folderExists(const std::string& folderName);
         static std::string fileName(const std::string& fullName);
         static std::string folderName(const std::string& fullName);
-        std::string joinPaths(const std::string& folder, const std::string& fileName);
+        static std::string joinPaths(const std::string& folder, const std::string& fileName);
+        static std::string clearPath(const std::string& path);
+        static std::string absolutePath(const std::string& path);
 
     private:
         static std::atomic<FileErrorCode> sErrorCode;

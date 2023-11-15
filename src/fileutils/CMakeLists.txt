@@ -1,3 +1,4 @@
+
 file (GLOB FILEUTILS_HEADERS "*.h")
 file (GLOB FILEUTILS_SOURCES "*.cpp")
 
@@ -15,9 +16,11 @@ add_library(fileutils_static STATIC ${FILEUTILS_HEADERS} ${FILEUTILS_SOURCES})
 set_property(TARGET fileutils PROPERTY FOLDER ${PRJECT_LIBRARIES_DIR})
 set_property(TARGET fileutils_static PROPERTY FOLDER ${PRJECT_LIBRARIES_DIR})
 target_include_directories(fileutils_static PUBLIC ".")
-#target_link_libraries(fileutils_static PUBLIC type_traits)
+target_link_libraries(fileutils_static PUBLIC fileutils_common_static platform_static)
+target_link_libraries(fileutils PUBLIC fileutils_common_static platform_static)
 
 install (TARGETS fileutils
          RUNTIME DESTINATION ${PROJECT_SOURCE_DIR}/_install
          LIBRARY DESTINATION ${PROJECT_SOURCE_DIR}/_install
 )
+
