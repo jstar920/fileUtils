@@ -10,6 +10,8 @@
 namespace fileutils
 {
     std::atomic<FileErrorCode> FileSystem::sErrorCode {FileErrorCode::Unknow};
+
+    const char FileSystem::SEPERATOR { fileutils::SEPERATOR };
     FileErrorCode FileSystem::getLastFileErrorCode()
     {
         return sErrorCode.load();
@@ -138,7 +140,7 @@ namespace fileutils
             }
             else
             {
-                cleanPath.push_back(SEPERATOR);
+                cleanPath.push_back(c);
                 isSlash = false;
             }
         }

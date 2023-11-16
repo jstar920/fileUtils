@@ -4,6 +4,8 @@
 
 namespace fileutils
 {
+     std::atomic<FileErrorCode> FileSystem_Platform::sErrorCode {FileErrorCode::Unknow};
+
      FileErrorCode FileSystem_Platform::getLastFileErrorCode()
      {
          return sErrorCode.load();
@@ -42,7 +44,7 @@ namespace fileutils
     bool FileSystem_Platform::folderExists(const std::string& folderName)
     {
          DWORD fileAttributes = ::GetFileAttributesA(folderName.c_str());
-         if (fileAttributes != INVALID_FILE_ATTRIBUTES && !(fileAttributes & FILE_ATTRIBUTE_DIRECTORY))
+         if (fileAttributes != INVALID_FILE_ATTRIBUTES && (fileAttributes & FILE_ATTRIBUTE_DIRECTORY))
          {
              return true;
          }

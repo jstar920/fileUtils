@@ -25,5 +25,7 @@ namespace fileutils
 
     private:
         static std::atomic<FileErrorCode> sErrorCode;
+    public:
+        const static char SEPERATOR;
     };
 }
